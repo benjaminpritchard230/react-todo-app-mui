@@ -4,10 +4,10 @@ import FloatingActionButtons from "./components/Fab";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <BasicGrid />
       <FloatingActionButtons />
-    </>
+    </div>
   );
 }
 
