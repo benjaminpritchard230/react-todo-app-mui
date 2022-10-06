@@ -1,13 +1,11 @@
 @media (max-width: 600px) {
   .app {
-    background-color: red;
     max-width: 100vw;
   }
 }
 
 @media (min-width: 1200px) {
   .app {
-    background-color: green;
     max-width: 66vw;
   }
 }

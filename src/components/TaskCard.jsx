@@ -5,6 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import DoneButton from "./DoneButton";
 
 const bull = (
   <Box
@@ -22,12 +23,7 @@ export default function BasicCard() {
         <Typography variant={"h5"}>Walk the dog</Typography>
       </CardContent>
       <CardActions>
-        <Button variant={"contained"} size="medium">
-          Done
-        </Button>
-        <Button variant={"outlined"} size="medium">
-          Delete
-        </Button>
+        <DoneButton />
       </CardActions>
     </Card>
   );

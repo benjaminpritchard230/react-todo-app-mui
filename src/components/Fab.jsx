@@ -4,8 +4,16 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 
 export default function FloatingActionButtons() {
+  const style = {
+    margin: 0,
+    top: "auto",
+    right: 20,
+    bottom: 20,
+    left: "auto",
+    position: "fixed",
+  };
   return (
-    <Box sx={{ "& > :not(style)": { m: 1 } }}>
+    <Box sx={{ "& > :not(style)": { m: 1 } }} style={style}>
       <Fab color="primary" aria-label="add">
         <AddIcon />
       </Fab>
