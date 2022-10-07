@@ -7,7 +7,22 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({
+  taskList = { taskList },
+  setTaskList = { setTaskList },
+}) {
+  const handleDoneClick = () => {
+    setTaskList((current) =>
+      current.filter((task) => {
+        return task.done === false;
+      })
+    );
+  };
+
+  const handleDeleteAllClick = () => {
+    setTaskList([]);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -15,8 +30,22 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             React To-do App
           </Typography>
-          <Button color="inherit">Delete Done</Button>
-          <Button color="inherit">Delete all</Button>
+          <Button
+            onClick={() => {
+              handleDoneClick();
+            }}
+            color="inherit"
+          >
+            Delete Done
+          </Button>
+          <Button
+            onClick={() => {
+              handleDeleteAllClick();
+            }}
+            color="inherit"
+          >
+            Delete all
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

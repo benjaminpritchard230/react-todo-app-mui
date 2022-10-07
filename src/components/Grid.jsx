@@ -15,34 +15,34 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function BasicGrid() {
+export default function BasicGrid({ taskList, setTaskList }) {
+  const createCards = () => {
+    let cardsArray = [];
+    taskList.forEach((task, index) => {
+      cardsArray.push(
+        <Grid xs={12} md={6} lg={4}>
+          <Item>
+            <BasicCard
+              task={task}
+              key={index}
+              taskList={taskList}
+              setTaskList={setTaskList}
+            />
+          </Item>
+        </Grid>
+      );
+    });
+    return cardsArray;
+  };
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid xs={12}>
-            <ButtonAppBar />
+            <ButtonAppBar taskList={taskList} setTaskList={setTaskList} />
           </Grid>
-          <Grid xs={12} md={6} lg={4}>
-            <Item>
-              <BasicCard />
-            </Item>
-          </Grid>
-          <Grid xs={12} md={6} lg={4}>
-            <Item>
-              <BasicCard />
-            </Item>
-          </Grid>
-          <Grid xs={12} md={6} lg={4}>
-            <Item>
-              <BasicCard />
-            </Item>
-          </Grid>
-          <Grid xs={12} md={6} lg={4}>
-            <Item>
-              <BasicCard />
-            </Item>
-          </Grid>
+          {createCards()}
         </Grid>
       </Box>
     </>

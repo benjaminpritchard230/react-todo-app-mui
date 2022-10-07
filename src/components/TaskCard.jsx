@@ -16,14 +16,14 @@ const bull = (
   </Box>
 );
 
-export default function BasicCard() {
+export default function BasicCard({ task, taskList, setTaskList }) {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography variant={"h5"}>Walk the dog</Typography>
+        <Typography variant={"h5"}>{task.name}</Typography>
       </CardContent>
       <CardActions>
-        <DoneButton />
+        <DoneButton task={task} taskList={taskList} setTaskList={setTaskList} />
       </CardActions>
     </Card>
   );
