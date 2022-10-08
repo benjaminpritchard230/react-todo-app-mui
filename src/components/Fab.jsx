@@ -10,7 +10,7 @@ export default function FloatingActionButtons({ setOpen }) {
     right: 20,
     bottom: 20,
     left: "auto",
-    position: "fixed",
+    position: "absolute",
   };
   return (
     <Box sx={{ "& > :not(style)": { m: 1 } }} style={style}>

@@ -37,7 +37,7 @@ export default function BasicGrid({ taskList, setTaskList }) {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, minWidth: 1 }}>
         <Grid container spacing={2}>
           <Grid xs={12}>
             <ButtonAppBar taskList={taskList} setTaskList={setTaskList} />

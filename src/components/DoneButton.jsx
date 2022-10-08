@@ -39,7 +39,10 @@ const DoneButton = ({ task, taskList, setTaskList }) => {
         }}
       >
         <Avatar>
-          <DoneIcon />
+          <DoneIcon
+            color={task.done ? "success" : "default"}
+            sx={{ "&:hover": { color: "green" } }}
+          />
         </Avatar>
       </IconButton>
       <IconButton
@@ -48,7 +51,7 @@ const DoneButton = ({ task, taskList, setTaskList }) => {
         }}
       >
         <Avatar>
-          <DeleteIcon />
+          <DeleteIcon sx={{ "&:hover": { color: "red" } }} />
         </Avatar>
       </IconButton>
     </Stack>
