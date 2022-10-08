@@ -16,7 +16,7 @@ export default function FloatingActionButtons({
     right: 20,
     bottom: 20,
     left: "auto",
-    position: "absolute",
+    position: "fixed",
   };
   return (
     <Box sx={{ "& > :not(style)": { m: 1 } }} style={style}>
@@ -38,8 +38,7 @@ export default function FloatingActionButtons({
         >
           <FilterAltIcon />
         </Fab>
-      ) : null}
-      {filterText.length > 0 ? (
+      ) : (
         <Fab
           aria-label="clear-filter"
           onClick={() => {
@@ -48,7 +47,7 @@ export default function FloatingActionButtons({
         >
           <FilterAltOffIcon />
         </Fab>
-      ) : null}
+      )}
     </Box>
   );
 }

@@ -1,17 +1,17 @@
 @media (max-width: 600px) {
-  body {
-    min-width: 100vw;
+  #root {
+    width: 100vw;
   }
 }
 
 @media (min-width: 600px) {
-  body {
-    min-width: 100vw;
+  #root {
+    width: 100vw;
   }
 }
 @media (min-width: 1200px) {
-  body {
-    min-width: 66vw;
+  #root {
+    width: 66vw;
   }
 }
 

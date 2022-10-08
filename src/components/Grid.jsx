@@ -19,6 +19,8 @@ export default function BasicGrid({
   setTaskList,
   filterText,
   filteredList,
+  theme,
+  setTheme,
 }) {
   const createCards = () => {
     let cardsArray = [];
@@ -63,7 +65,12 @@ export default function BasicGrid({
       <Box sx={{ flexGrow: 1, minWidth: 1 }}>
         <Grid container spacing={2}>
           <Grid xs={12}>
-            <ButtonAppBar taskList={taskList} setTaskList={setTaskList} />
+            <ButtonAppBar
+              taskList={taskList}
+              setTaskList={setTaskList}
+              theme={theme}
+              setTheme={setTheme}
+            />
           </Grid>
           {filterText ? createFilteredCards() : createCards()}
         </Grid>

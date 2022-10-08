@@ -21,6 +21,7 @@ export default function BasicCard({ task, taskList, setTaskList }) {
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography variant={"h5"}>{task.name}</Typography>
+        <Typography variant={"h6"}>{task.date}</Typography>
       </CardContent>
       <CardActions>
         <DoneButton task={task} taskList={taskList} setTaskList={setTaskList} />
