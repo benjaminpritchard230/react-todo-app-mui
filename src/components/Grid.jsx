@@ -21,6 +21,8 @@ export default function BasicGrid({
   filteredList,
   theme,
   setTheme,
+  openEdit,
+  setOpenEdit,
 }) {
   const createCards = () => {
     let cardsArray = [];
@@ -33,6 +35,8 @@ export default function BasicGrid({
               key={index}
               taskList={taskList}
               setTaskList={setTaskList}
+              openEdit={openEdit}
+              setOpenEdit={setOpenEdit}
             />
           </Item>
         </Grid>
@@ -45,11 +49,10 @@ export default function BasicGrid({
     let cardsArray = [];
     filteredList.forEach((task, index) => {
       cardsArray.push(
-        <Grid xs={12} md={6} lg={4}>
+        <Grid xs={12} md={6} lg={4} key={index}>
           <Item>
             <BasicCard
               task={task}
-              key={index}
               taskList={taskList}
               setTaskList={setTaskList}
             />
@@ -62,7 +65,7 @@ export default function BasicGrid({
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, minWidth: 1 }}>
+      <Box sx={{ flexGrow: 1, minWidth: 1 }} key="1">
         <Grid container spacing={2}>
           <Grid xs={12}>
             <ButtonAppBar

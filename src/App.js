@@ -6,18 +6,11 @@ import { useState, useEffect } from "react";
 import FilterDialog from "./components/FilterDialog";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import EditDialog from "./components/EditDialog";
 
 function App() {
   const date = new Date().toISOString().slice(0, 10);
-  const [taskList, setTaskList] = useState([
-    {
-      name: "Eat food",
-      done: true,
-      id: 123,
-      date: date,
-    },
-    { name: "Walk dog", done: false, id: 456, date: date },
-  ]);
+  const [taskList, setTaskList] = useState([]);
 
   const lightTheme = createTheme({
     palette: {
@@ -35,6 +28,7 @@ function App() {
 
   const [open, setOpen] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   const [filterText, setFilterText] = useState("");
   const [filteredList, setFilteredList] = useState([]);
   const [theme, setTheme] = useState("dark");
@@ -57,6 +51,8 @@ function App() {
         filterText={filterText}
         theme={theme}
         setTheme={setTheme}
+        openEdit={openEdit}
+        setOpenEdit={setOpenEdit}
       />
       <FormDialog
         open={open}
@@ -66,7 +62,7 @@ function App() {
         setFilterText={setFilterText}
       />
       <FilterDialog
-        open={openFilter}
+        openFilter={openFilter}
         setOpenFilter={setOpenFilter}
         taskList={taskList}
         setTaskList={setTaskList}

@@ -8,8 +8,9 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import DoneIcon from "@mui/icons-material/Done";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
 
-const DoneButton = ({ task, taskList, setTaskList }) => {
+const DoneButton = ({ task, taskList, setTaskList, openEdit, setOpenEdit }) => {
   const handleDeleteClick = () => {
     setTaskList((current) =>
       current.filter((toDo) => {
@@ -24,6 +25,10 @@ const DoneButton = ({ task, taskList, setTaskList }) => {
     console.log(tempArray[index]);
     tempArray[index].done = !tempArray[index].done;
     setTaskList(tempArray);
+  };
+
+  const handleEditClick = () => {
+    setOpenEdit(true);
   };
 
   return (
@@ -41,8 +46,17 @@ const DoneButton = ({ task, taskList, setTaskList }) => {
         <Avatar>
           <DoneIcon
             color={task.done ? "success" : "default"}
-            sx={{ "&:hover": { color: "green" } }}
+            // sx={{ "&:hover": { color: "green" } }}
           />
+        </Avatar>
+      </IconButton>
+      <IconButton
+        onClick={() => {
+          handleEditClick();
+        }}
+      >
+        <Avatar>
+          <EditIcon sx={{ "&:hover": { color: "yellow" } }} />
         </Avatar>
       </IconButton>
       <IconButton

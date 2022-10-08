@@ -7,35 +7,43 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function FilterDialog({
-  openFilter,
-  setOpenFilter,
+export default function EditDialog({
+  openEdit,
+  setOpenEdit,
+  task,
   taskList,
   setTaskList,
-  setFilterText,
+  editText,
+  setEditText,
 }) {
-  const handleFilter = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setOpenFilter(false);
-    console.log(e.target[0].value);
-    setFilterText(e.target[0].value);
+    if (e.target[0].value) {
+      let tempArray = [...taskList];
+      const index = taskList.findIndex((element) => element.id === task.id);
+      console.log(tempArray[index]);
+      tempArray[index].name = e.target[0].value;
+      setTaskList(tempArray);
+    }
+    setOpenEdit(false);
   };
-  const handleCancel = () => {
-    setOpenFilter(false);
+
+  const handleCancelClick = () => {
+    setOpenEdit(false);
   };
 
   return (
     <div>
-      <Dialog open={openFilter}>
-        <form onSubmit={handleFilter}>
-          <DialogTitle>Filter tasks by name</DialogTitle>
+      <Dialog open={openEdit}>
+        <form onSubmit={handleSubmit}>
+          <DialogTitle>Edit task name</DialogTitle>
           <DialogContent>
             <DialogContentText></DialogContentText>
             <TextField
               autoFocus
               margin="dense"
               id="name"
-              label="Filter tasks"
+              label="New name"
               type="text"
               fullWidth
               variant="standard"
@@ -44,12 +52,12 @@ export default function FilterDialog({
           <DialogActions>
             <Button
               onClick={() => {
-                handleCancel();
+                handleCancelClick();
               }}
             >
               Cancel
             </Button>
-            <Button type="submit">Filter tasks</Button>
+            <Button type="submit">Edit task</Button>
           </DialogActions>
         </form>
       </Dialog>
