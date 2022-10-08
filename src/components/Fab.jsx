@@ -29,14 +29,16 @@ export default function FloatingActionButtons({
       >
         <AddIcon />
       </Fab>
-      <Fab
-        aria-label="filter"
-        onClick={() => {
-          setOpenFilter(true);
-        }}
-      >
-        <FilterAltIcon />
-      </Fab>
+      {filterText.length === 0 ? (
+        <Fab
+          aria-label="filter"
+          onClick={() => {
+            setOpenFilter(true);
+          }}
+        >
+          <FilterAltIcon />
+        </Fab>
+      ) : null}
       {filterText.length > 0 ? (
         <Fab
           aria-label="clear-filter"
