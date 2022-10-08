@@ -2,8 +2,14 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-
-export default function FloatingActionButtons({ setOpen }) {
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import FilterAltOffIcon from "@mui/icons-material/FilterAltOff";
+export default function FloatingActionButtons({
+  setOpen,
+  setOpenFilter,
+  filterText,
+  setFilterText,
+}) {
   const style = {
     margin: 0,
     top: "auto",
@@ -23,6 +29,24 @@ export default function FloatingActionButtons({ setOpen }) {
       >
         <AddIcon />
       </Fab>
+      <Fab
+        aria-label="filter"
+        onClick={() => {
+          setOpenFilter(true);
+        }}
+      >
+        <FilterAltIcon />
+      </Fab>
+      {filterText.length > 0 ? (
+        <Fab
+          aria-label="clear-filter"
+          onClick={() => {
+            setFilterText("");
+          }}
+        >
+          <FilterAltOffIcon />
+        </Fab>
+      ) : null}
     </Box>
   );
 }

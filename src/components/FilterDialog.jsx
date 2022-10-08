@@ -6,52 +6,36 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { v4 as uuidv4 } from "uuid";
 
-export default function FormDialog({
+export default function FilterDialog({
   open,
-  setOpen,
+  setOpenFilter,
   taskList,
   setTaskList,
   setFilterText,
 }) {
-  const id = uuidv4();
-  const date = new Date().toISOString().slice(0, 10);
-
-  const handleCancel = () => {
-    setOpen(false);
-  };
-
-  const handleSubmit = (e) => {
+  const handleFilter = (e) => {
     e.preventDefault();
-    setOpen(false);
-    setFilterText("");
+    setOpenFilter(false);
     console.log(e.target[0].value);
-    let name = e.target[0].value;
-    if (name) {
-      setTaskList([
-        ...taskList,
-        {
-          name: name,
-          date: date,
-          id: id,
-          done: false,
-        },
-      ]);
-    }
+    setFilterText(e.target[0].value);
   };
+  const handleCancel = () => {
+    setOpenFilter(false);
+  };
+
   return (
     <div>
       <Dialog open={open}>
-        <form onSubmit={handleSubmit}>
-          <DialogTitle>Enter task name</DialogTitle>
+        <form onSubmit={handleFilter}>
+          <DialogTitle>Filter tasks by name</DialogTitle>
           <DialogContent>
             <DialogContentText></DialogContentText>
             <TextField
               autoFocus
               margin="dense"
               id="name"
-              label="Task name"
+              label="Filter tasks"
               type="text"
               fullWidth
               variant="standard"
@@ -65,7 +49,7 @@ export default function FormDialog({
             >
               Cancel
             </Button>
-            <Button type="submit">Create task</Button>
+            <Button type="submit">Filter tasks</Button>
           </DialogActions>
         </form>
       </Dialog>

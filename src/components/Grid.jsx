@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import BasicCard from "./TaskCard";
 import ButtonAppBar from "./AppBar";
-import FloatingActionButtons from "./Fab";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -15,10 +14,34 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function BasicGrid({ taskList, setTaskList }) {
+export default function BasicGrid({
+  taskList,
+  setTaskList,
+  filterText,
+  filteredList,
+}) {
   const createCards = () => {
     let cardsArray = [];
     taskList.forEach((task, index) => {
+      cardsArray.push(
+        <Grid xs={12} md={6} lg={4}>
+          <Item>
+            <BasicCard
+              task={task}
+              key={index}
+              taskList={taskList}
+              setTaskList={setTaskList}
+            />
+          </Item>
+        </Grid>
+      );
+    });
+    return cardsArray;
+  };
+
+  const createFilteredCards = () => {
+    let cardsArray = [];
+    filteredList.forEach((task, index) => {
       cardsArray.push(
         <Grid xs={12} md={6} lg={4}>
           <Item>
@@ -42,7 +65,7 @@ export default function BasicGrid({ taskList, setTaskList }) {
           <Grid xs={12}>
             <ButtonAppBar taskList={taskList} setTaskList={setTaskList} />
           </Grid>
-          {createCards()}
+          {filterText ? createFilteredCards() : createCards()}
         </Grid>
       </Box>
     </>
